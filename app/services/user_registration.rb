@@ -23,17 +23,19 @@ class UserRegistration
   def _run
     @ran and return
     uid = "%s|%s" % [
-      @auth_hash['provider'],
-      @auth_hash['uid']
+      @auth_hash[:provider],
+      @auth_hash[:uid]
     ]
 
     if user = User.find(uid: uid).first
+
       @user    = user
       @created = false
     else
       @user = User.create(
-        uid:        uid, 
-        name:       @auth_hash['info']['name'],
+        uid:        uid,
+        name:       @auth_hash[:info][:name],
+        email:      @auth_hash[:info][:email],
         created_at: Time.current.utc.to_i
       )
       @created = true
