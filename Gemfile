@@ -54,9 +54,13 @@ gem 'cancan'   # Authorisation
 
 
 # Debugger
-gem 'pry'
-gem 'pry-nav'
-gem 'pry-doc'
+group :development do
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'pry-doc'
+  gem 'rubocop'
+  gem 'letter_opener'
+end
 
 
 group :test do
